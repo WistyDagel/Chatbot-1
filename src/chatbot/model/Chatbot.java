@@ -53,7 +53,7 @@ public class Chatbot
 	public boolean quitChecker(String input)
 	{
 		boolean okToQuit = false;
-		if(input.equalsIgnoreCase("Good Bye"))
+		if(input != null && input.equalsIgnoreCase("Good Bye"))
 		{
 			okToQuit = true;
 		}

@@ -19,16 +19,25 @@ public class ChatbotAppController
 		notSoCleverbot = new Chatbot("Mr. Clever");
 	}
 	/**
-	 * Starts the Chatbot Applicatoin
+	 * Allows other object access to the notSoCleverbot.
+	 * @return The Chatbot for this app.
+	 */
+	public Chatbot getNotSoCleverbot()
+	{
+		return notSoCleverbot;
+	}
+	
+	/**
+	 * Starts the Chatbot Application
 	 */
 	public void start()
 	{
-		String message = JOptionPane.showInputDialog(null, "Would you like to continue?");
-		if(notSoCleverbot.quitChecker(message))
+		String message = JOptionPane.showInputDialog(null, "Welcome to Chatbot, type in your name.");
+		while(!notSoCleverbot.quitChecker(message))
 		{
-			quit();
+			message = appView.displayChatbotConversations(message);
 		}
-		JOptionPane.showMessageDialog(null, "We are not done yet...");
+		quit();
 	}
 	/**
 	 * Ends and closes the program completely
