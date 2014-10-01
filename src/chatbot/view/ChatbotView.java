@@ -11,10 +11,23 @@ public class ChatbotView
 	{
 		this.baseController = baseController;
 	}
+	/**
+	 * Displayed the supplied String parameter to the user via popup and returns the users response to the controller.
+	 * @param input The supplied text to be displayed.
+	 * @return The users input.
+	 */
 	public String displayChatbotConversations(String input)
 	{
 		String output = "";
-		output = JOptionPane.showInputDialog(null, baseController.getNotSoCleverbot().getName() + " says hello " + input+ ". Do you wish to continue?");
+		output = JOptionPane.showInputDialog(null, input);
 		return output;
+	}
+	/**
+	 * Displays the supplied input via a popup window
+	 * @param input The text to be displayed.
+	 */
+	public void displayInformation(String input)
+	{
+		JOptionPane.showMessageDialog(null, input);
 	}
 }
