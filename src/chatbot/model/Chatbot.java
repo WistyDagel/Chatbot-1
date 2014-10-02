@@ -68,12 +68,15 @@ public class Chatbot
 	 */
 	public String processText(String userText)
 	{
+		int stringLength = userText.length();
 		String processedText = "";
 		incrementChats();
 		if(memeChecker(userText))
 		{
 			processedText = "Hey! you found a meme: " + userText;
 			processedText += "\nIsn't that cool.";
+			processedText += "\nBtw the length of your text was: " + stringLength + ".";
+			
 		}
 		else
 		{
@@ -115,14 +118,5 @@ public class Chatbot
 		}
 		return isAMeme;
 	}
-	/**
-	 * Checks the length of the user input and responds based on the word itself
-	 * @param userLength
-	 * @return
-	 */
-	public int stringChecker(String userInput)
-	{
-		int stringLength = userInput.length();
-		return stringLength;
-	}
+
 }
