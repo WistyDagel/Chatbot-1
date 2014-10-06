@@ -70,14 +70,42 @@ public class Chatbot
 	{
 		String processedText = "";
 		incrementChats();
-		if(memeChecker(userText))
+		int randomChoice = (int)(Math.random() * 3);
+		if(randomChoice == 0)
 		{
-			processedText = "Hey! you found a meme: " + userText;
-			processedText += "\nIsn't that cool.";
+			// stringChecker
+			if(stringChecker(userText))
+			{
+				processedText = "Wow getting a bit long winded there are we?";
+			}
+			else
+			{
+				processedText = "Wow man, learn to talk a bit more. That was pitiful";
+			}
+		}
+		else if(randomChoice == 1)
+		{
+			// contentChecker
+			if(contentChecker(userText))
+			{
+				processedText = "Man I love spicy food! It's my favorite! Aw man.... Now I'm craving it...";
+			}
+			else
+			{
+				processedText = "So.... What kind of food do you like?";
+			}
 		}
 		else
 		{
-			processedText = "Boring...";
+			if(memeChecker(userText))
+			{
+				processedText = "Hey! you found a meme: " + userText;
+				processedText += "\nIsn't that cool.";
+			}
+			else
+			{
+				processedText = "Boring...";
+			}	
 		}
 		return processedText;
 	}
