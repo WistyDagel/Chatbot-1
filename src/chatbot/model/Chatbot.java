@@ -68,15 +68,12 @@ public class Chatbot
 	 */
 	public String processText(String userText)
 	{
-		int stringLength = userText.length();
 		String processedText = "";
 		incrementChats();
 		if(memeChecker(userText))
 		{
 			processedText = "Hey! you found a meme: " + userText;
 			processedText += "\nIsn't that cool.";
-			processedText += "\nBtw the length of your text was: " + stringLength + ".";
-			
 		}
 		else
 		{
@@ -98,25 +95,50 @@ public class Chatbot
 		}
 		return okToQuit;
 	}	
+	/**
+	 * Checks to see if the input text is a reference to a meme
+	 * @param currentText text input by user
+	 * @return value returns either true or false
+	 */
 	private boolean memeChecker(String currentText)
 	{
-		boolean isAMeme = false;
+		boolean foundAMeme = false;
 		for(String currentMeme: memeList)
 		{
 			if (currentMeme.equalsIgnoreCase(currentText))
 			{
-				isAMeme = true;
-			}
-		
-		}
-		for(int loopCount = 0; loopCount < memeList.size(); loopCount++)
-		{
-			if(memeList.get(loopCount).equalsIgnoreCase(currentText))
-			{
-				isAMeme = true;
+				foundAMeme = true;
 			}
 		}
-		return isAMeme;
+		return foundAMeme;
 	}
-
+	/**
+	 * Checks how long the text input is and sets a boolean value based on it.
+	 * @param userText The text input by the user
+	 * @return true if text length is above or equal to 15.
+	 */
+	private boolean stringChecker(String input)
+	{
+		boolean longText = false;
+		int textLength = input.length();
+		if (textLength >= 15)
+		{
+			longText = true;
+		}
+		return longText;
+	}
+	/**
+	 * Checks if the text supplied to the user references spicy food.
+	 * @param input The text supplied by the user
+	 * @return true or false based on input
+	 */
+	private boolean contentChecker(String input)
+	{
+		boolean containsWord = false;
+		if (input.contains("spicy food"))
+		{
+			containsWord = true;
+		}
+		return containsWord;
+	}
 }
