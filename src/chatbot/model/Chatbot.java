@@ -14,11 +14,11 @@ public class Chatbot
 	 */
 	public Chatbot(String name)
 	{
+		// this. means talk to the current class
 		this.name = name;
 		numberOfChats = 0;
 		memeList = new ArrayList<String>();
 		fillTheMemeList();
-		// this. means talk to the current class
 	}
 	/**
 	 * Method that retrieves the name of the chatbot when called
@@ -52,6 +52,9 @@ public class Chatbot
 	{
 		numberOfChats++;
 	}
+	/**
+	 * Adds a list of memes to memeList.
+	 */
 	private void fillTheMemeList()
 	{
 		memeList.add("u mad bro?");
@@ -133,7 +136,7 @@ public class Chatbot
 		boolean foundAMeme = false;
 		for(String currentMeme: memeList)
 		{
-			if (currentMeme.equalsIgnoreCase(currentText))
+			if (currentText.contains(currentMeme) || currentText.equalsIgnoreCase(currentMeme))
 			{
 				foundAMeme = true;
 			}
