@@ -1,7 +1,5 @@
 package chatbot.controller;
 
-import javax.swing.JOptionPane;
-
 import chatbot.model.Chatbot;
 import chatbot.view.ChatbotView;
 /**
@@ -49,6 +47,11 @@ public class ChatbotAppController
 		while(!notSoCleverbot.quitChecker(message))
 		{
 			message = notSoCleverbot.processText(message);
+			if(message.equals("I've said too much!"))
+			{
+				message = appView.displayChatbotConversations(message);
+				quit();
+			}
 			message = appView.displayChatbotConversations(message);
 		}
 		quit();

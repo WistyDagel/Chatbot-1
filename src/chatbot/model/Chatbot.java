@@ -74,41 +74,57 @@ public class Chatbot
 		String processedText = "";
 		incrementChats();
 		int randomChoice = (int)(Math.random() * 3);
-		if(randomChoice == 0)
-		{
-			// stringChecker
-			if(stringChecker(userText))
+		if(userText != null)
+		{	
+			if(randomChoice == 0)
 			{
-				processedText = "Wow getting a bit long winded there are we?";
+				// stringChecker
+				if(stringChecker(userText))
+				{
+					incrementChats();
+					processedText = "Wow getting a bit long winded there are we?";
+					processedText += "\n" + numberOfChats;
+				}
+				else
+				{
+					processedText = "Wow man, learn to talk a bit more. That was pitiful";
+					processedText += "\n" + numberOfChats;
+				}
+			}
+			else if(randomChoice == 1)
+			{
+				// contentChecker
+				if(contentChecker(userText))
+				{
+					incrementChats();
+					processedText = "Man I love spicy food! It's my favorite! Aw man.... Now I'm craving it...";
+					processedText += "\n" + numberOfChats;
+				}
+				else
+				{
+					processedText = "So.... What kind of food do you like?";
+					processedText += "\n" + numberOfChats;
+				}
 			}
 			else
 			{
-				processedText = "Wow man, learn to talk a bit more. That was pitiful";
+				if(memeChecker(userText))
+				{
+					incrementChats();
+					processedText = "Hey! you found a meme: " + userText;
+					processedText += "\nIsn't that cool.";
+					processedText += "\n" + numberOfChats;
+				}
+				else
+				{
+					processedText = "Boring...";
+					processedText += "\n" + numberOfChats;
+				}	
 			}
-		}
-		else if(randomChoice == 1)
-		{
-			// contentChecker
-			if(contentChecker(userText))
+			if (numberOfChats == 10)
 			{
-				processedText = "Man I love spicy food! It's my favorite! Aw man.... Now I'm craving it...";
+				processedText = "I've said too much!";
 			}
-			else
-			{
-				processedText = "So.... What kind of food do you like?";
-			}
-		}
-		else
-		{
-			if(memeChecker(userText))
-			{
-				processedText = "Hey! you found a meme: " + userText;
-				processedText += "\nIsn't that cool.";
-			}
-			else
-			{
-				processedText = "Boring...";
-			}	
 		}
 		return processedText;
 	}
