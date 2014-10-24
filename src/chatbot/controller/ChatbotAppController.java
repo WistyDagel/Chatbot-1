@@ -57,7 +57,7 @@ public class ChatbotAppController
 	
 	public void start()
 	{
-		String message = appView.displayChatbotConversations(startMessage);
+//		String message = appView.displayChatbotConversations(startMessage);
 //
 //		 while(!notSoCleverbot.quitChecker(message))
 //		 
