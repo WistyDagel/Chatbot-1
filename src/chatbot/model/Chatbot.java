@@ -83,12 +83,12 @@ public class Chatbot
 				{
 					incrementChats();
 					processedText = "Wow getting a bit long winded there are we?";
-					processedText += "\n" + numberOfChats;
+					processedText += numberOfChats;
 				}
 				else
 				{
 					processedText = "Wow man, learn to talk a bit more. That was pitiful";
-					processedText += "\n" + numberOfChats;
+					processedText += numberOfChats;
 				}
 			}
 			else if(randomChoice == 1)
@@ -98,12 +98,12 @@ public class Chatbot
 				{
 					incrementChats();
 					processedText = "Man I love spicy food! It's my favorite! Aw man.... Now I'm craving it...";
-					processedText += "\n" + numberOfChats;
+					processedText +=  numberOfChats;
 				}
 				else
 				{
 					processedText = "So.... What kind of food do you like?";
-					processedText += "\n" + numberOfChats;
+					processedText +=  numberOfChats;
 				}
 			}
 			else
@@ -113,12 +113,12 @@ public class Chatbot
 					incrementChats();
 					processedText = "Hey! you found a meme: " + userText;
 					processedText += "\nIsn't that cool.";
-					processedText += "\n" + numberOfChats;
+					processedText +=  numberOfChats;
 				}
 				else
 				{
 					processedText = "Boring...";
-					processedText += "\n" + numberOfChats;
+					processedText +=  numberOfChats;
 				}	
 			}
 			if (numberOfChats == 10)

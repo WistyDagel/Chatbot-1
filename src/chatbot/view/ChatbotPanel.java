@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import chatbot.controller.ChatbotAppController;
 
 import javax.swing.*;
+
 import java.awt.Font;
 
 public class ChatbotPanel extends JPanel
@@ -42,8 +43,9 @@ public class ChatbotPanel extends JPanel
 		sampleField.setBackground(Color.LIGHT_GRAY);
 		
 		baseLayout = new SpringLayout();
-		baseLayout.putConstraint(SpringLayout.EAST, sampleField, 321, SpringLayout.WEST, this);
-		baseLayout.putConstraint(SpringLayout.WEST, randomButton, 56, SpringLayout.EAST, sampleButton);
+		baseLayout.putConstraint(SpringLayout.NORTH, randomButton, 0, SpringLayout.NORTH, sampleButton);
+		baseLayout.putConstraint(SpringLayout.EAST, randomButton, 0, SpringLayout.EAST, sampleField);
+		baseLayout.putConstraint(SpringLayout.EAST, sampleField, 318, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, sampleButton, 40, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.WEST, sampleField, 40, SpringLayout.WEST, this);
 		baseLayout.putConstraint(SpringLayout.SOUTH, sampleButton, -6, SpringLayout.NORTH, chatPane);
@@ -81,9 +83,6 @@ public class ChatbotPanel extends JPanel
 	 */
 	private void setupLayout()
 	{
-
-		
-		baseLayout.putConstraint(SpringLayout.NORTH, randomButton, 0, SpringLayout.NORTH, sampleButton);
 		randomButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -108,7 +107,12 @@ public class ChatbotPanel extends JPanel
 		{
 			public void actionPerformed(ActionEvent click)
 			{
-				sampleField.setText(sampleField.getText() + " :O woah...");
+				String userTypedText = sampleField.getText();
+				String chatbotResponse = baseController.sendTextToChatBot(userTypedText);
+				displayTextToUser(userTypedText);
+				displayTextToUser(chatbotResponse);
+				sampleField.setText("");
+				
 			}
 		});
 		
@@ -118,20 +122,30 @@ public class ChatbotPanel extends JPanel
 			public void actionPerformed(ActionEvent click)
 			{
 				i++;
-				if (i <= 1)
+				if (i == 1)
 				{
-					sampleField.setText("Never click this button again. Never");
+					chatArea.append("\nNever click this button again. Never");
 				}
 				else if (i == 2)
 				{
-					sampleField.setText("Are you kidding me? You Clicked it again?");
+					chatArea.append("\nAre you kidding me? You clicked it again?");
 				}
-				else if (i >= 3)
+				else if (i == 3)
 				{
-					sampleField.setText("I'm done with you. Chatbot out.");
+					chatArea.append("\nI'm done with you. Chatbot out.");
+				}
+				else if(i == 4)
+				{
+					baseController.getBaseFrame().dispose();
 				}
 			}
 			
 		});
 	}
+
+	public void displayTextToUser(String input)
+	{
+		chatArea.append("\n" + input);
+	}
 }
+

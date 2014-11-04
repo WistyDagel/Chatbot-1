@@ -2,12 +2,13 @@ package chatbot.controller;
 
 import chatbot.model.Chatbot;
 import chatbot.view.ChatbotFrame;
+import chatbot.view.ChatbotPanel;
 import chatbot.view.ChatbotView;
 
 /**
  * Application Controller for the Chatbot String projoct. Controls the View and Model packages.
  * @author Daniel Osmond
- * @version 1.2 10/1/14
+ * @version 1.4 11/4/14 - Added user things.
  */
 
 public class ChatbotAppController
@@ -51,26 +52,23 @@ public class ChatbotAppController
 	{
 		return notSoCleverbot;
 	}
+	
+	public ChatbotFrame getBaseFrame()
+	{
+		return baseFrame;
+	}
 	/**
 	 * Starts the Chatbot Application
 	 */
 	
 	public void start()
 	{
-//		String message = appView.displayChatbotConversations(startMessage);
-//
-//		 while(!notSoCleverbot.quitChecker(message))
-//		 
-//		{
-//			message = notSoCleverbot.processText(message);
-//			if(message.equals("I've said too much!"))
-//			{
-//				message = appView.displayChatbotConversations(message);
-//				quit();
-//			}
-//			message = appView.displayChatbotConversations(message);
-//		}
-//		quit();
+		
+		ChatbotPanel myAppPanel = (ChatbotPanel) baseFrame.getContentPane();
+		myAppPanel.displayTextToUser(startMessage);
+		
+		
+		//((ChatbotPanel) baseFrame.getContentPane()).displayTextToUser(startMessage);
 	}
 	/**
 	 * Ends and closes the program completely
@@ -80,5 +78,14 @@ public class ChatbotAppController
 	{
 		appView.displayInformation("Good bye cruel user :( I hope to never see you again.");
 		System.exit(0);
+	}
+	
+	public String sendTextToChatBot(String userInput)
+	{
+		String respondText = "";
+		
+		respondText = notSoCleverbot.processText(userInput);
+		
+		return respondText;
 	}
 }
