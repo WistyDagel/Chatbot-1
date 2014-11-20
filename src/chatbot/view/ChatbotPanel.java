@@ -124,7 +124,7 @@ public class ChatbotPanel extends JPanel
 				i++;
 				if (i == 1)
 				{
-					chatArea.append("\nNever click this button again. Never");
+					chatArea.append("\nNever click this button again... Never");
 				}
 				else if (i == 2)
 				{
@@ -148,4 +148,3 @@ public class ChatbotPanel extends JPanel
 		chatArea.append("\n" + input);
 	}
 }
-
