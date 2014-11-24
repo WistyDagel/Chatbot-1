@@ -141,7 +141,7 @@ public class Chatbot
 			}
 			else if(randomChoice == 5)
 			{
-				if(userInputChecker(userText))
+				if(contentChecker(userText))
 				{
 					processedText = "Yikes you knew what you said before!";
 				}
